@@ -51,7 +51,7 @@ export default function BlogPost() {
                 <div className="flex flex-col md:flex-row gap-8">
                     <article className="flex-grow">
                         <header className="mb-8">
-                            <h1 className="text-4xl font-bold mb-2">Il Futuro dell'Intelligenza Artificiale: Opportunità e Sfide</h1>
+                            <h1 className="text-4xl font-bold mb-2">Titolo</h1>
                             <div className="flex items-center text-gray-600 space-x-4">
                                 <span className="flex items-center">
                                     <CalendarIcon className="w-4 h-4 mr-2" />
