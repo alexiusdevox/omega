@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-const YOUTUBE_CHANNEL_ID = process.env.NEXT_PUBLIC_YOUTUBE_CHANNEL_ID;
+const YOUTUBE_API_KEY = "AIzaSyDKuEFy9UFVvclGV1pWncwhwO5ces1-EMY";
+const YOUTUBE_CHANNEL_ID = "UCLrgUeP56dUPUwp4vCy6RIQ";
 
 export async function GET() {
   
