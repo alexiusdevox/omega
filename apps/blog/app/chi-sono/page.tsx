@@ -138,7 +138,7 @@ export default function About() {
 
         <section className="py-28" id="newsletter">
         <h2 className="text-center mb-6 text-3xl md:text-5xl font-extrabold">
-          Apri i confini della consocenza
+          Apri i confini della conoscenza
         </h2>
         <p className="text-center text-lg mb-8">
         Articoli esclusivi su scienza, tecnologia e misteri che sfidano ciò che pensiamo di sapere.
