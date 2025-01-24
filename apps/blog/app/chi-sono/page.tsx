@@ -136,7 +136,7 @@ export default function About() {
         </section>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-zinc-700" />
 
-        <section className="py-28" id="newsletter">
+        <section className="py-20" id="newsletter">
         <h2 className="text-center mb-6 text-3xl md:text-5xl font-extrabold">
           Apri i confini della conoscenza
         </h2>
