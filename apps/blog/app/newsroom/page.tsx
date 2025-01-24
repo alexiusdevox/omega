@@ -68,24 +68,7 @@ export default function Newsroom() {
 
         </div>
       </section>
-      <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-zinc-700" />
-      <section className="py-20">
-        <h2 className="text-left mb-10 text-3xl md:text-4xl font-extrabold">Categorie</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {categories.map((category) => (
-            <div key={category.id}>
-              <Link
-                href={`/newsroom/${category.id}`}
-              >
-                <article className="h-full p-4 bg-white border border-zinc-200 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-zinc-100 dark:bg-black transition-all">
-                  <h3 className="mb-2 text-sm font-bold text-zinc-900 dark:text-zinc-100">{category.name}</h3>
-                  <p className="text-sm text-zinc-800 dark:text-zinc-400">{category.description}</p>
-                </article>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
+      
     </div>
   )
 }
