@@ -1,0 +1,41 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.121.3",
+    "@react-three/fiber": "9.0.0-rc.5",
+    "@repo/ui": "workspace:*",
+    "@types/three": "^0.172.0",
+    "lucide-react": "^0.471.1",
+    "mysql2": "^3.12.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.5.1",
+    "sequelize": "^6.37.5",
+    "swiper": "^11.2.1",
+    "three": "^0.172.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "18.3.1",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "5.5.4"
+  }
+}
