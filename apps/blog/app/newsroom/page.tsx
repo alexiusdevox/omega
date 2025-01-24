@@ -31,7 +31,7 @@ export default function Newsroom() {
               Descrizione articolo in evidenzia
             </p>
             <Link
-                  href="/forum"
+                  href="/ufo-documenti"
                   className="text-sm inline-flex items-center justify-center text-zinc-100 font-medium px-4 py-2 bg-transparent dark:bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-900 dark:text-zinc-100 border border-zinc-200 dark:border-zinc-700"
                 >
                   Leggi di più
