@@ -14,6 +14,29 @@ export default function Header() {
         setIsMenuOpen((prevState) => !prevState);
     };
 
+
+    // Funzione per determinare se un link è attivo
+    const isActiveLink = (href: string) => {
+        return pathname === href;
+    };
+
+    // Funzione per generare le classi del link
+    const getLinkClasses = (href: string) => {
+        const baseClasses = "font-bold block py-2 pr-4 pl-3 border-b border-zinc-300 xl:border-0 xl:p-0";
+        const inactiveClasses = "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-700 xl:hover:bg-transparent xl:hover:text-zinc-700 dark:text-zinc-400 xl:dark:hover:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-zinc-300 xl:dark:hover:bg-transparent dark:border-zinc-700";
+        const activeClasses = "text-zinc-900 dark:text-zinc-100";
+        
+        return `${baseClasses} ${isActiveLink(href) ? activeClasses : inactiveClasses}`;
+    };
+
+
+
+
+
+
+
+
+
     // Chiudi il menu quando cambia il pathname (cambio pagina)
     useEffect(() => {
         setIsMenuOpen(false);
@@ -58,10 +81,10 @@ export default function Header() {
                     <div className="flex items-center space-x-8">
                         <Link
                             href="/"
-                            className="flex items-center"
+                            className={`flex items-center ${isActiveLink('/') ? 'text-blue-600 dark:text-blue-500' : ''}`}
                             aria-current="page"
                         >
-                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-zinc-100">
                                 Omega Click World
                             </span>
                         </Link>
@@ -71,7 +94,7 @@ export default function Header() {
                             <li>
                                 <Link
                                     href="/chi-sono"
-                                    className="font-medium block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                    className={getLinkClasses('/chi-sono')}
                                 >
                                     Chi sono
                                 </Link>
@@ -80,7 +103,7 @@ export default function Header() {
                             <li>
                                 <Link
                                     href="/documenti"
-                                    className="font-medium block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                    className={getLinkClasses('/documenti')}
                                 >
                                     Documenti
                                 </Link>
@@ -88,7 +111,7 @@ export default function Header() {
                             <li>
                                 <Link
                                     href="/forum"
-                                    className="font-medium block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                    className={getLinkClasses('/forum')}
                                 >
                                     Forum
                                 </Link>
@@ -96,7 +119,7 @@ export default function Header() {
                             <li>
                                 <Link
                                     href="/contatti"
-                                    className="font-medium block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                    className={getLinkClasses('/contatti')}
                                 >
                                     Contatti
                                 </Link>
@@ -111,7 +134,7 @@ export default function Header() {
                                 <input
                                     type="text"
                                     placeholder="Cerca..."
-                                    className="md:w-[350px] xl:w-max outline-none border border-zinc-300 focus:border-zinc-500 dark:border-zinc-800 focus:dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-900 text-sm p-2.5 placeholder-zinc-500 dark:placeholder-zinc-400 dark:text-white"
+                                    className="md:w-[350px] xl:w-max outline-none border border-zinc-300 focus:border-zinc-500 dark:border-zinc-800 focus:dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-900 text-sm p-2.5 placeholder-zinc-500 dark:placeholder-zinc-400 dark:text-zinc-100"
                                 />
                             </fieldset>
                         </form>
@@ -119,7 +142,7 @@ export default function Header() {
                             <li>
                                 <Link
                                     href="/accedi"
-                                    className="text-zinc-800 dark:text-white hover:bg-zinc-50 font-medium text-sm px-4 py-2 dark:hover:bg-zinc-900 border border-zinc-300 dark:border-zinc-800"
+                                    className="text-zinc-800 dark:text-zinc-100 hover:bg-zinc-50 font-medium text-sm px-4 py-2 dark:hover:bg-zinc-900 border border-zinc-300 dark:border-zinc-800"
                                 >
                                     Accedi
                                 </Link>
@@ -189,7 +212,7 @@ export default function Header() {
                                 type="text"
                                 name="query"
                                 placeholder="Cerca..."
-                                className="w-full outline-none border border-zinc-300 focus:border-zinc-500 dark:border-zinc-800 focus:dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-900 text-sm p-2.5 placeholder-zinc-500 dark:placeholder-zinc-400 dark:text-white"
+                                className="w-full outline-none border border-zinc-300 focus:border-zinc-500 dark:border-zinc-800 focus:dark:border-zinc-600 bg-zinc-100 dark:bg-zinc-900 text-sm p-2.5 placeholder-zinc-500 dark:placeholder-zinc-400 dark:text-zinc-100"
                             />
                         </fieldset>
                     </form>
@@ -197,7 +220,7 @@ export default function Header() {
                         <li role="menuitem">
                             <Link
                                 href="/chi-sono"
-                                className="block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                className={getLinkClasses('/chi-sono')}
                             >
                                 Chi sono
                             </Link>
@@ -206,7 +229,7 @@ export default function Header() {
                         <li role="menuitem">
                             <Link
                                 href="/documenti"
-                                className="block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                className={getLinkClasses('/documenti')}
                             >
                                 Documenti
                             </Link>
@@ -214,7 +237,7 @@ export default function Header() {
                         <li role="menuitem">
                             <Link
                                 href="/forum"
-                                className="block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                className={getLinkClasses('/forum')}
                             >
                                 Forum
                             </Link>
@@ -222,7 +245,7 @@ export default function Header() {
                         <li role="menuitem">
                             <Link
                                 href="/contatti"
-                                className="block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                className={getLinkClasses('/contatti')}
                             >
                                 Contatti
                             </Link>
@@ -233,3 +256,4 @@ export default function Header() {
         </header>
     );
 }
+
