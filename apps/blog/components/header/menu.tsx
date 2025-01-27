@@ -1,18 +1,30 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { categories } from '../../app/lib/categories';
 
 const Menu = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
-    const menuItems = [
-        { href: "/newsroom/ufo-documenti", text: "Ufologia e documenti ufficiali" },
-        { href: "/newsroom/dossier", text: "Dossier riservati su argomenti di attualità" },
-        { href: "/newsroom/geopolitica", text: "Geopolitica e notizie senza filtri" },
-        { href: "/newsroom/paranormale", text: "Paranormale" },
-        { href: "/newsroom/scienza", text: "Scienza e curiosità" },
-        { href: "/newsroom/storia-tecnologia-illuminati", text: "Storia, tecnologia e Illuminati" }
-    ];
+    // Funzione per verificare se un link è attivo
+    const isActiveLink = (href: string) => {
+        return pathname === href || pathname.startsWith(href + '/');
+    };
+
+    // Funzione per generare le classi del link
+    const getLinkClasses = (href: string, isMobile = false) => {
+        const baseClasses = isMobile 
+            ? "block py-2 pr-4 pl-3 border-b border-zinc-100 hover:bg-zinc-100 xl:hover:bg-transparent xl:border-0"
+            : "text-black dark:text-zinc-100 block px-4 py-2 hover:bg-zinc-200 dark:hover:bg-zinc-700";
+            
+        const activeClasses = "text-zinc-900 dark:text-zinc-100 font-semibold";
+        
+        return `${baseClasses} ${isActiveLink(href) ? activeClasses : ''}`;
+    };
+
+    // Verifica se siamo in una qualsiasi sottopagina di newsroom
+    const isNewsroomActive = pathname.startsWith('/newsroom');
 
     return (
         <div className="relative" role="none">
@@ -24,7 +36,10 @@ const Menu = () => {
                         aria-haspopup="true"
                         aria-expanded={isOpen}
                         aria-controls="desktop-submenu"
-                        className="flex items-center text-left py-2 px-4 font-medium text-zinc-700 border-b border-zinc-100 hover:bg-zinc-50 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                        className={`flex items-center text-left py-2 px-4 font-bold xl:p-0 
+                            ${isNewsroomActive 
+                                ? 'text-zinc-700 dark:text-zinc-100' 
+                                : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300'}`}
                         onMouseEnter={() => setIsOpen(true)}
                         onMouseLeave={() => setIsOpen(false)}
                     >
@@ -47,15 +62,14 @@ const Menu = () => {
                                     <Link
                                         href={`/newsroom/${category.id}`}
                                         role="menuitem"
-                                        className="text-black dark:text-white block px-4 py-2 hover:bg-zinc-200 dark:hover:bg-zinc-700"
-                                        onClick={() => setIsOpen(false)} // Chiude il dropdown al click
+                                        className={getLinkClasses(`/newsroom/${category.id}`)}
+                                        onClick={() => setIsOpen(false)}
                                     >
                                         {category.name}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
-
                     </div>
                 </li>
             </ul>
@@ -67,7 +81,10 @@ const Menu = () => {
                     aria-haspopup="true"
                     aria-expanded={isOpen}
                     aria-controls="mobile-submenu"
-                    className="flex items-center w-full text-left py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                    className={`flex items-center w-full text-left py-2 pr-4 pl-3 border-b border-zinc-100 
+                        ${isNewsroomActive 
+                            ? 'text-blue-600 dark:text-blue-500' 
+                            : 'text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'}`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <span className="flex-1">Newsroom</span>
@@ -99,8 +116,7 @@ const Menu = () => {
                                 <Link
                                     href={`/newsroom/category/${category.id}`}
                                     role="menuitem"
-
-                                    className="block py-2 pr-4 pl-3 text-zinc-700 border-b border-zinc-100 hover:bg-zinc-100 hover:text-zinc-900 xl:hover:bg-transparent xl:border-0 xl:hover:text-primary-700 xl:p-0 dark:text-zinc-400 xl:dark:hover:text-white dark:hover:bg-zinc-700 dark:hover:text-white xl:dark:hover:bg-transparent dark:border-zinc-700"
+                                    className={getLinkClasses(`/newsroom/category/${category.id}`, true)}
                                 >
                                     {category.name}
                                 </Link>
